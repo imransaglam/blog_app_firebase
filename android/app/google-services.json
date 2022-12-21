@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "160329578143",
+    "project_id": "fir-uskudar",
+    "storage_bucket": "fir-uskudar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:160329578143:android:b2c48b69c0bf68e5dfd4aa",
+        "android_client_info": {
+          "package_name": "com.example.loginregister"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "160329578143-uilhsul7faucou98p1lev1b9p5pmh9ik.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYdoTYf_OqS1nE5eC6j4ZISOt3mkMfjH4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "160329578143-uilhsul7faucou98p1lev1b9p5pmh9ik.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

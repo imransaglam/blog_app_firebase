@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:loginregister/pages/sign_up_screen.dart';
 import '../const/const_data.dart';
 import '../widget/custom_elevated_button.dart';
 import '../widget/custom_text_button.dart';
@@ -32,8 +33,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     texts.welcome,
                     style: Theme.of(context)
                         .textTheme
-                        .headline5
-                        ?.copyWith(fontWeight: FontWeight.bold),
+                        .titleLarge
+                        ?.copyWith(fontWeight: FontWeight.w900,fontFamily: 'Teko',fontSize: 28),
                   ),
                   const Padding(
                     padding: paddingMeasurement.iconPadding,
@@ -46,11 +47,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
                _sizedBox2(),
-               Text(texts.email,style: Theme.of(context).textTheme.subtitle2?.copyWith(color:loginColor.textColors,fontWeight: FontWeight.w400)),
+               Text(texts.email,style: Theme.of(context).textTheme.titleMedium?.copyWith(color:loginColor.textColors,fontWeight: FontWeight.w400,fontFamily: 'Teko',fontSize: 20)),
                Padding(
                  padding: paddingMeasurement.textFieldPadding,
                  child: SizedBox(
-                  height: 48,
+                  height: texts.sheight,
                    child: TextFormField(
                     keyboardType: TextInputType.emailAddress,
                      decoration:InputDecarotorEmail().inputs,
@@ -58,25 +59,27 @@ class _LoginScreenState extends State<LoginScreen> {
                  ),
                ),
                 _sizedBox2(),
-                 Text(texts.passsword,style: Theme.of(context).textTheme.subtitle2?.copyWith(color:loginColor.textColors,fontWeight: FontWeight.w400)),
+                 Text(texts.passsword,style: Theme.of(context).textTheme.titleMedium?.copyWith(color:loginColor.textColors,fontWeight: FontWeight.w400,fontFamily: 'Teko',fontSize: 20)),
                Padding(
                  padding: paddingMeasurement.textFieldPadding,
                  child: SizedBox(
-                  height: 48,
+                  height: texts.sheight,
                    child: TextFormField(
                       keyboardType: TextInputType.visiblePassword,
-                     decoration:InputDecarotorEmail().inputs,
+                     decoration:InputDecarotorPassword().inputs,
                    ),
                  ),
                ),
                SizedBox(
                 width: MediaQuery.of(context).size.width,
-                 child: Padding(
+                 child:const Padding(
                    padding: paddingMeasurement.textFieldPadding,
                    child: customElevatedButton(title: loginText.login,),
                  ),
                ),
-                Center(child: customTextButton(title:loginText.textSignUp))
+                  Center(child: customTextButton(title:loginText.textSignUp,onPressedx: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) =>SignUpScreen()) );
+               },))
             ],
           ),
               ),
@@ -88,9 +91,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
 SizedBox _sizedBox() =>const  SizedBox(
-        height: 120,
+        height: 180,
       );
        SizedBox _sizedBox2() => const SizedBox(
-        height: 40,
+        height: 30,
       );
+   
 

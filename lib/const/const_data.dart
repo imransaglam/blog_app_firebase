@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 class paddingMeasurement {
   static const columnPadding = EdgeInsets.symmetric(horizontal: 60);
   static const iconPadding = EdgeInsets.only(left: 8);
-   static const textFieldPadding = EdgeInsets.only(top: 20);
+   static const textFieldPadding = EdgeInsets.only(top: 10);
 }
 
 class loginText {
+  final double sheight=48;
   final String welcome = "Hi, Welcome Back!";
   final String email = "Email";
   final String passsword = "Password";
@@ -36,6 +37,7 @@ class InputDecarotorEmail{
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
                   hintText:loginText.example,
+                  hintStyle: TextStyle(fontWeight: FontWeight.w400,fontFamily: 'Teko',fontSize: 18)
                  );
 }
 class InputDecarotorPassword{
@@ -44,6 +46,7 @@ class InputDecarotorPassword{
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
                   hintText:loginText.enterPassword,
+                  hintStyle: TextStyle(fontWeight: FontWeight.w400,fontFamily: 'Teko',fontSize: 18)
                  );
 }
 class InputDecarotorUserName{
@@ -52,6 +55,7 @@ class InputDecarotorUserName{
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
                   hintText:loginText.userName,
+                  hintStyle: TextStyle(fontWeight: FontWeight.w400,fontFamily: 'Teko',fontSize: 18)
                  );
 }
 class InputDecarotorUserMail{
@@ -60,6 +64,7 @@ class InputDecarotorUserMail{
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
                   hintText:loginText.userMail,
+                  hintStyle: TextStyle(fontWeight: FontWeight.w400,fontFamily: 'Teko',fontSize: 18)
                  );
                  
 }
@@ -69,6 +74,7 @@ class InputDecarotorUserPhoneNumber{
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
                   hintText:loginText.userPhoneNumber,
+                  hintStyle: TextStyle(fontWeight: FontWeight.w400,fontFamily: 'Teko',fontSize: 18)
                  );
                  
 }
@@ -78,6 +84,7 @@ class InputDecarotorUserPassword{
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
                   hintText:loginText.userPassword,
+                  hintStyle: TextStyle(fontWeight: FontWeight.w400,fontFamily: 'Teko',fontSize: 18)
                  );
                  
 }

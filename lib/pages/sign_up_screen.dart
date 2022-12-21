@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loginregister/const/const_data.dart';
+import 'package:loginregister/pages/login_screen.dart';
 
 import '../widget/custom_elevated_button.dart';
 import '../widget/custom_text_button.dart';
@@ -28,8 +29,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     texts.account,
                     style: Theme.of(context)
                         .textTheme
-                        .headline5
-                        ?.copyWith(fontWeight: FontWeight.bold),
+                        .titleLarge
+                        ?.copyWith(fontWeight: FontWeight.w900,fontFamily: 'Teko',fontSize: 28),
                   ),
                ),
                  Center(
@@ -37,8 +38,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     texts.accountText,
                     style: Theme.of(context)
                         .textTheme
-                        .subtitle2
-                        ?.copyWith(fontWeight: FontWeight.w600,color: loginColor.titleColors),
+                        .titleMedium
+                        ?.copyWith(fontWeight: FontWeight.w600,color: loginColor.titleColors,fontFamily: 'Teko',fontSize: 20),
                 ),
                  ),
                   
@@ -46,7 +47,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
              Padding(
                padding: paddingMeasurement.textFieldPadding,
                child: SizedBox(
-                height: 48,
+                height: texts.sheight,
                  child: TextFormField(
                     keyboardType: TextInputType.name,
                    decoration:InputDecarotorUserName().inputs,
@@ -57,7 +58,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
              Padding(
                padding: paddingMeasurement.textFieldPadding,
                child: SizedBox(
-                height: 48,
+                height: texts.sheight,
                  child: TextFormField(
                     keyboardType: TextInputType.emailAddress,
                    decoration:InputDecarotorUserMail().inputs,
@@ -68,7 +69,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
              Padding(
                padding: paddingMeasurement.textFieldPadding,
                child: SizedBox(
-                height: 48,
+                height: texts.sheight,
                  child: TextFormField(
                     keyboardType: TextInputType.phone,
                    decoration:InputDecarotorUserPhoneNumber().inputs,
@@ -79,7 +80,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
              Padding(
                padding: paddingMeasurement.textFieldPadding,
                child: SizedBox(
-                height: 48,
+                height: texts.sheight,
                  child: TextFormField(
                     keyboardType: TextInputType.visiblePassword,
                    decoration:InputDecarotorUserPassword().inputs,
@@ -93,7 +94,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                    child: customElevatedButton(title: loginText.signUp,),
                  ),
                ),
-               Center(child: customTextButton(title:loginText.textLogin))
+               Center(child: customTextButton(title:loginText.textLogin,onPressedx: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) =>LoginScreen()) );
+               },))
              ],
             
           ),
@@ -101,7 +104,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  SizedBox _sizedBox3() => SizedBox(height: 60,);
+  SizedBox _sizedBox3() => SizedBox(height: 130,);
    SizedBox _sizedBox4() => SizedBox(height: 20,);
 }
 

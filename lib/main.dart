@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:loginregister/d.dart';
 import 'package:loginregister/pages/sign_up_screen.dart';
 
 import 'pages/login_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await DependencyInjection.init();
   runApp(const MyApp());
 }
 

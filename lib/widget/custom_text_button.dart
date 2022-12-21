@@ -3,14 +3,13 @@ import 'package:loginregister/pages/sign_up_screen.dart';
 
 class customTextButton extends StatelessWidget {
   const customTextButton({
-    Key? key, required this.title,
+    Key? key, required this.title, required this.onPressedx,
   }) : super(key: key);
  final String title;
-
+ final void Function() onPressedx;
   @override
   Widget build(BuildContext context) {
-    return TextButton(onPressed: (){
-      Navigator.push(context, MaterialPageRoute(builder: (context) =>SignUpScreen()) );
-    }, child: Text(title));
+    return TextButton(
+      onPressed: onPressedx, child: Text(title,style: TextStyle(fontFamily: 'Teko',fontWeight: FontWeight.w400,fontSize: 18),));
   }
 }
