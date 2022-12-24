@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:loginregister/pages/sign_up_screen.dart';
+import 'package:loginregister/modules/register/register_screen.dart';
 
 class customTextButton extends StatelessWidget {
   const customTextButton({

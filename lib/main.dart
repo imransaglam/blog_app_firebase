@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:loginregister/di.dart';
-import 'package:loginregister/pages/sign_up_screen.dart';
+import 'package:loginregister/modules/register/register_screen.dart';
+import 'package:loginregister/routes/app_pages.dart';
 
-import 'pages/login_screen.dart';
+import 'modules/login/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,11 +18,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home: const LoginScreen(),
+      initialRoute: Routes.LOGIN,
+      enableLog: true,
+      getPages: AppPages.routes,
     );
   }
 }

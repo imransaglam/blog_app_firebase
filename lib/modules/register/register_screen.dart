@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:loginregister/const/const_data.dart';
-import 'package:loginregister/pages/login_screen.dart';
+import 'package:loginregister/modules/login/login_screen.dart';
+import 'package:loginregister/modules/register/register_controller.dart';
 
-import '../widget/custom_elevated_button.dart';
-import '../widget/custom_text_button.dart';
+import '../../routes/app_pages.dart';
+import '../../widget/custom_elevated_button.dart';
+import '../../widget/custom_text_button.dart';
+import 'register_controller.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({super.key});
+class RegisterScreen extends GetView<RegisterControler> {
+   RegisterScreen({super.key});
 
-  @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
-}
-
-class _SignUpScreenState extends State<SignUpScreen> {
   final loginText texts = loginText();
   @override
   Widget build(BuildContext context) {
@@ -44,44 +43,46 @@ class _SignUpScreenState extends State<SignUpScreen> {
                  ),
                   
                _sizedBox4(),
-             Padding(
-               padding: paddingMeasurement.textFieldPadding,
-               child: SizedBox(
-                height: texts.sheight,
-                 child: TextFormField(
-                    keyboardType: TextInputType.name,
-                   decoration:InputDecarotorUserName().inputs,
-                 ),
-               ),
-             ),
+            //  Padding(
+            //    padding: paddingMeasurement.textFieldPadding,
+            //    child: SizedBox(
+            //     height: texts.sheight,
+            //      child: TextFormField(
+            //         keyboardType: TextInputType.name,
+            //        decoration:InputDecarotorUserName().inputs,
+            //      ),
+            //    ),
+            //  ),
              _sizedBox4(),
              Padding(
                padding: paddingMeasurement.textFieldPadding,
                child: SizedBox(
                 height: texts.sheight,
                  child: TextFormField(
+                  controller: controller.email,
                     keyboardType: TextInputType.emailAddress,
                    decoration:InputDecarotorUserMail().inputs,
                  ),
                ),
              ),
-              _sizedBox4(),
-             Padding(
-               padding: paddingMeasurement.textFieldPadding,
-               child: SizedBox(
-                height: texts.sheight,
-                 child: TextFormField(
-                    keyboardType: TextInputType.phone,
-                   decoration:InputDecarotorUserPhoneNumber().inputs,
-                 ),
-               ),
-             ),
+            //  _sizedBox4(),
+            //  Padding(
+            //    padding: paddingMeasurement.textFieldPadding,
+            //    child: SizedBox(
+            //     height: texts.sheight,
+            //      child: TextFormField(
+            //         keyboardType: TextInputType.phone,
+            //        decoration:InputDecarotorUserPhoneNumber().inputs,
+            //      ),
+            //    ),
+            //  ),
                            _sizedBox4(),
              Padding(
                padding: paddingMeasurement.textFieldPadding,
                child: SizedBox(
                 height: texts.sheight,
                  child: TextFormField(
+                  controller: controller.password,
                     keyboardType: TextInputType.visiblePassword,
                    decoration:InputDecarotorUserPassword().inputs,
                  ),
@@ -89,13 +90,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
              ),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
-                 child: const Padding(
+                 child:  Padding(
                    padding: paddingMeasurement.textFieldPadding,
-                   child: customElevatedButton(title: loginText.signUp,),
+                   child: customElevatedButton(title: loginText.signUp,onPressedy: () {
+                     controller.auth.createUser(controller.email.text, controller.password.text);
+                   },),
                  ),
                ),
                Center(child: customTextButton(title:loginText.textLogin,onPressedx: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) =>LoginScreen()) );
+                 Get.toNamed(Routes.LOGIN);
                },))
              ],
             
@@ -104,7 +107,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  SizedBox _sizedBox3() => SizedBox(height: 130,);
+  SizedBox _sizedBox3() => SizedBox(height: 160,);
    SizedBox _sizedBox4() => SizedBox(height: 20,);
 }
 

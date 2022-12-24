@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:loginregister/pages/sign_up_screen.dart';
-import '../const/const_data.dart';
-import '../widget/custom_elevated_button.dart';
-import '../widget/custom_text_button.dart';
+import 'package:get/get.dart';
+import 'package:loginregister/modules/login/login_controller.dart';
+import 'package:loginregister/modules/register/register_screen.dart';
+import '../../const/const_data.dart';
+import '../../routes/app_pages.dart';
+import '../../widget/custom_elevated_button.dart';
+import '../../widget/custom_text_button.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class LoginScreen extends GetView<LoginController> {
+ LoginScreen({super.key});
 
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
   final loginText texts = loginText();
   @override
   Widget build(BuildContext context) {
@@ -53,6 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
                  child: SizedBox(
                   height: texts.sheight,
                    child: TextFormField(
+                    controller: controller.email,
                     keyboardType: TextInputType.emailAddress,
                      decoration:InputDecarotorEmail().inputs,
                    ),
@@ -65,6 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
                  child: SizedBox(
                   height: texts.sheight,
                    child: TextFormField(
+                   controller: controller.password,
                       keyboardType: TextInputType.visiblePassword,
                      decoration:InputDecarotorPassword().inputs,
                    ),
@@ -72,13 +70,15 @@ class _LoginScreenState extends State<LoginScreen> {
                ),
                SizedBox(
                 width: MediaQuery.of(context).size.width,
-                 child:const Padding(
+                 child: Padding(
                    padding: paddingMeasurement.textFieldPadding,
-                   child: customElevatedButton(title: loginText.login,),
+                   child: customElevatedButton(title: loginText.login,onPressedy:()async{
+                   await controller.auth.signUpAccount(controller.email.text,controller.password.text);
+                   },)
                  ),
                ),
                   Center(child: customTextButton(title:loginText.textSignUp,onPressedx: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) =>SignUpScreen()) );
+                  Get.toNamed(Routes.REGISTER);
                },))
             ],
           ),
