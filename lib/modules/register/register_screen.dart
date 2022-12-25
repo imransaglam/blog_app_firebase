@@ -92,7 +92,7 @@ class RegisterScreen extends GetView<RegisterControler> {
                 width: MediaQuery.of(context).size.width,
                  child:  Padding(
                    padding: paddingMeasurement.textFieldPadding,
-                   child: customElevatedButton(title: loginText.signUp,onPressedy: () {
+                   child: customElevatedButton(titleFontFamily: loginText.fontName,title: loginText.signUp,onPressedy: () {
                      controller.auth.createUser(controller.email.text, controller.password.text);
                    },),
                  ),

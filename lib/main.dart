@@ -6,6 +6,7 @@ import 'package:loginregister/modules/home/home_screen.dart';
 import 'package:loginregister/modules/register/register_screen.dart';
 import 'package:loginregister/routes/app_pages.dart';
 
+import 'modules/detail/detail_screen.dart';
 import 'modules/login/login_screen.dart';
 
 void main() async {
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home:HomeScreen()
+      home:DetailScreen()
       // initialRoute: Routes.LOGIN,
       // enableLog: true,
       // getPages: AppPages.routes,

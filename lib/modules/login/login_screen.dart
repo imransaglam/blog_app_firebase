@@ -72,7 +72,7 @@ class LoginScreen extends GetView<LoginController> {
                 width: MediaQuery.of(context).size.width,
                  child: Padding(
                    padding: paddingMeasurement.textFieldPadding,
-                   child: customElevatedButton(title: loginText.login,onPressedy:()async{
+                   child: customElevatedButton(titleFontFamily: loginText.fontName,title: loginText.login,onPressedy:()async{
                    await controller.auth.signUpAccount(controller.email.text,controller.password.text);
                    },)
                  ),

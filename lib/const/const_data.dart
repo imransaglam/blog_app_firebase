@@ -8,6 +8,8 @@ class paddingMeasurement {
   static const containerPadding=EdgeInsets.only(top:14,right: 16,bottom: 12,left: 16);
   static const containerrPadding=EdgeInsets.only(left:16,right: 16);
   static const containerrrPadding=EdgeInsets.all(16.0);
+  static const detailsScreenPadding=EdgeInsets.symmetric(vertical: 30,horizontal: 16); 
+  static const elevatedButtonPadding=EdgeInsets.only(left:290);
 }
 class ProjectStyle{
   static const TextStyle appBarStyle=TextStyle(
@@ -34,9 +36,10 @@ class loginText {
   final double elevationAppBar=0;
   final double elevationCard=2;
   final double borderRadiusCard=4;
-   final double borderRadiusElevatedButton=15;
+  final double borderRadiusElevatedButton=15;
   final int textMaxLines=2;
   final int textMaxLiness=1;
+  final String elevatedText = "POST";
   final String floatText = "CREATE";
   final String welcome = "Hi, Welcome Back!";
   final String email = "Email";
@@ -44,6 +47,9 @@ class loginText {
   final String account = "Create an account";
   final String accountText = "Connect with your friends today!";
   final String appBarText = "Home";
+  final String appBarTextt="Post A Question";
+  static const textFieldTopic = "Topic";
+  static const textFieldContent = "Content";
   static const fontName='Teko';
   static const homeFontName='Comfortaa';
   static const example="example@gmail.com";
@@ -64,10 +70,38 @@ class loginColor {
   static const Color textColors = Color(0xff695C5C);
   static const Color titleColors = Color(0xff343434);
   static const Color appBarColors=Colors.black;
+  static const Color appBarColorss=Colors.white;
+  static const Color appBarBgColorss=Color(0xff005FEE);
   static const Color searchIconColors=Color(0xff005FEE);
   static const Color blogTextColors=Color(0xff666666);
   static const Color appBarBgColors=Colors.transparent;
   static const Color elevatedButtonColors=Color(0xffB2D1FF);
+   static const Color textFormFieldTopicColors=Color(0xffF2F2F2);
+}
+
+class InputDecorationContent{
+  final inputs=const  InputDecoration(
+                      hintText:loginText.textFieldContent,
+                      hintStyle: TextStyle(fontFamily: loginText.homeFontName,fontWeight: FontWeight.w600,fontSize:23,color:Colors.black ),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: loginColor.textFormFieldTopicColors
+                        )
+                        )
+                     );
+}
+
+class InputDecorationTopic{
+  final inputs=const  InputDecoration(
+                    hintText: loginText.textFieldTopic,
+                    hintStyle: TextStyle(fontFamily: loginText.homeFontName,fontWeight: FontWeight.w600,fontSize:23,color:Colors.black ),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: loginColor.textFormFieldTopicColors
+                      )
+                      )
+                   );
+                
 }
 class InputDecarotorEmail{
   final inputs=const  InputDecoration(
