@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
 
+import '../../routes/app_pages.dart';
+
 class AuthService extends GetxService{
 
    Future<AuthService> init() async{
@@ -30,8 +32,8 @@ signUpAccount(email,password) async{
  try{
    final credential=await FirebaseAuth.instance.signInWithEmailAndPassword(
     email: email, 
-    password: password);
-    print("Giriş yapıldı ${credential.user?.email}");
+    password: password).then((value) => Get.offAndToNamed(Routes.HOME));
+    //print("Giriş yapıldı ${credential.user?.email}");
  }
  on FirebaseAuthException catch(e){
   if (e.code == 'user-not-found') {

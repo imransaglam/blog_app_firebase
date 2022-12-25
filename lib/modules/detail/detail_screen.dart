@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:loginregister/const/const_data.dart';
 import 'package:loginregister/widget/custom_elevated_button.dart';
-import 'package:loginregister/widget/custom_floatingaction_button.dart';
+import '../../routes/app_pages.dart';
+import 'detail_controller.dart';
 
-class DetailScreen extends StatelessWidget {
+class DetailScreen extends GetView<DetailController> {
    DetailScreen({super.key});
 final loginText texts=loginText();
   @override
@@ -13,7 +14,9 @@ final loginText texts=loginText();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: loginColor.appBarBgColorss ,
-        leading: IconButton(onPressed: (){}, icon: Icon(Icons.chevron_left_outlined),),
+        leading: IconButton(onPressed: (){
+          Get.toNamed(Routes.HOME);
+        }, icon: Icon(Icons.chevron_left_outlined),),
         title:Text(texts.appBarTextt,style: Theme.of(context).textTheme.titleLarge?.copyWith(fontFamily:loginText.homeFontName,color:loginColor.appBarColorss,),) ,
       ),
       body: SingleChildScrollView(
@@ -36,7 +39,9 @@ final loginText texts=loginText();
                     _sizedBox2(),
                   Padding(
                     padding: paddingMeasurement.elevatedButtonPadding,
-                    child: customElevatedButton(title: texts.elevatedText, onPressedy: (){},titleFontFamily: loginText.homeFontName),
+                    child: customElevatedButton(title: texts.elevatedText, onPressedy: (){
+                     
+                    },titleFontFamily: loginText.homeFontName),
                   )
 
             ],

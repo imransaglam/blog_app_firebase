@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
 import 'package:loginregister/const/const_data.dart';
 import 'package:loginregister/widget/custom_floatingaction_button.dart';
 
-class HomeScreen extends StatelessWidget {
+import '../../routes/app_pages.dart';
+import 'home_controller.dart';
+
+class HomeScreen extends GetView<HomeController> {
   HomeScreen({super.key});
   final loginText texts = loginText();
   @override
@@ -127,8 +129,10 @@ class HomeScreen extends StatelessWidget {
           
         ),
       ),
-       floatingActionButton: CustomFloatingActionButton(texts: texts)
-       
+       floatingActionButton: CustomFloatingActionButton(texts: texts,onPressedz: () {
+         Get.toNamed(Routes.DETAIL);
+       },)
+      
         );
     
   }

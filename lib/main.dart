@@ -24,10 +24,10 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home:DetailScreen()
-      // initialRoute: Routes.LOGIN,
-      // enableLog: true,
-      // getPages: AppPages.routes,
+     // home:DetailScreen()
+       initialRoute: Routes.LOGIN,
+       enableLog: true,
+       getPages: AppPages.routes,
     );
   }
 }
