@@ -13,6 +13,7 @@ class HomeScreen extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: false,
         elevation: texts.elevationAppBar,
         backgroundColor: loginColor.appBarBgColors,
         title: (Text(texts.appBarText, style: ProjectStyle.appBarStyle)),

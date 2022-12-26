@@ -9,7 +9,7 @@ class paddingMeasurement {
   static const containerrPadding=EdgeInsets.only(left:16,right: 16);
   static const containerrrPadding=EdgeInsets.all(16.0);
   static const detailsScreenPadding=EdgeInsets.symmetric(vertical: 30,horizontal: 16); 
-  static const elevatedButtonPadding=EdgeInsets.only(left:290);
+  static const elevatedButtonPadding=EdgeInsets.only(left:270);
 }
 class ProjectStyle{
   static const TextStyle appBarStyle=TextStyle(
@@ -17,7 +17,8 @@ class ProjectStyle{
  fontFamily: loginText.homeFontName,
  fontSize: 20,
  fontWeight: FontWeight.w500,
- letterSpacing: 1
+ letterSpacing: 1,
+ 
   );
   static const Icon appBarIcon=Icon(
     Icons.search,color: loginColor.searchIconColors,);
@@ -26,7 +27,7 @@ class loginText {
   final double containerHeight=176;
   final double containerWidth=384;
   final double containerrHeight=96;
-  final double containerrrWidth=256;
+  final double containerrrWidth=250;
   final double containerrrHeight=70;
   final double containerrrrWidth=344;
   final double containerrrrHeight=80;
@@ -82,7 +83,7 @@ class loginColor {
 class InputDecorationContent{
   final inputs=const  InputDecoration(
                       hintText:loginText.textFieldContent,
-                      hintStyle: TextStyle(fontFamily: loginText.homeFontName,fontWeight: FontWeight.w600,fontSize:23,color:Colors.black ),
+                      hintStyle: TextStyle(fontFamily: loginText.homeFontName,fontWeight: FontWeight.w600,fontSize:20,color:Colors.black ),
                       border: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: loginColor.textFormFieldTopicColors
@@ -94,7 +95,7 @@ class InputDecorationContent{
 class InputDecorationTopic{
   final inputs=const  InputDecoration(
                     hintText: loginText.textFieldTopic,
-                    hintStyle: TextStyle(fontFamily: loginText.homeFontName,fontWeight: FontWeight.w600,fontSize:23,color:Colors.black ),
+                    hintStyle: TextStyle(fontFamily: loginText.homeFontName,fontWeight: FontWeight.w600,fontSize:20,color:Colors.black ),
                     border: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: loginColor.textFormFieldTopicColors

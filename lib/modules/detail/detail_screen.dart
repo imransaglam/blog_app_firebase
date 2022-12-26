@@ -4,6 +4,7 @@ import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:loginregister/const/const_data.dart';
 import 'package:loginregister/widget/custom_elevated_button.dart';
 import '../../routes/app_pages.dart';
+import '../../shared/service/storage_service.dart';
 import 'detail_controller.dart';
 
 class DetailScreen extends GetView<DetailController> {
@@ -25,12 +26,14 @@ final loginText texts=loginText();
           child: Column(
             children: [
                  TextFormField(
+                  controller: controller.topic,
                    decoration:InputDecorationTopic().inputs
                  ),
                  _sizedBox2(),
                   Container(
                      height: MediaQuery.of(context).size.height*0.5,
                     child: TextFormField(
+                      controller: controller.content,
                       keyboardType: TextInputType.multiline,
                     maxLines: 30,
                      decoration:InputDecorationContent().inputs
@@ -39,8 +42,13 @@ final loginText texts=loginText();
                     _sizedBox2(),
                   Padding(
                     padding: paddingMeasurement.elevatedButtonPadding,
-                    child: customElevatedButton(title: texts.elevatedText, onPressedy: (){
-                     
+                    child: customElevatedButton(title: texts.elevatedText,
+                     onPressedy: (){
+                      final user=User(
+                        topic:controller.topic.text,
+                        content: controller.content.text,
+                      );
+                      controller.storage.strogeUser(user);
                     },titleFontFamily: loginText.homeFontName),
                   )
 
