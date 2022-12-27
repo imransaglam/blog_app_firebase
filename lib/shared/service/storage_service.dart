@@ -5,30 +5,20 @@ class StorageService extends GetxService{
   Future<StorageService> init()async{
    return this;
   }
- strogeUser(User user)async{
-  final docUser=FirebaseFirestore.instance.collection('blog').doc();
- user.id=docUser.id;
-  final json=user.toJson();
-  await docUser.set(json);
+  //Writing data
+ strogeUser(topic,content){
+Map<String,dynamic>blogData={"topic":topic,"content":content};
+CollectionReference collectionRef=FirebaseFirestore.instance.collection("blog");
+collectionRef.add(blogData);
   }
-  
+//Reading data
+Stream<QuerySnapshot> readBlog(){
+   var ref=FirebaseFirestore.instance.collection("blog").snapshots();
+   return ref;
+    }
+//Delete data
+deleteData(String blogId){
+  FirebaseFirestore.instance.collection("blog").doc(blogId).delete();
 }
-class User{
-  String id;
-   String topic;
-   String content;
-
-  User({
-    this.id='',
-    this.topic='',
-     this.content='',
-
-  });
-
-  Map<String,dynamic> toJson()=>{
-    'id':id,
-    'topic':topic,
-    'content':content
-  };
-
+  
 }

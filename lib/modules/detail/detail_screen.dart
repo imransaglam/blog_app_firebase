@@ -44,11 +44,8 @@ final loginText texts=loginText();
                     padding: paddingMeasurement.elevatedButtonPadding,
                     child: customElevatedButton(title: texts.elevatedText,
                      onPressedy: (){
-                      final user=User(
-                        topic:controller.topic.text,
-                        content: controller.content.text,
-                      );
-                      controller.storage.strogeUser(user);
+                     controller.storage.strogeUser(controller.topic.text,controller.content.text);
+                      Get.toNamed(Routes.HOME);
                     },titleFontFamily: loginText.homeFontName),
                   )
 
