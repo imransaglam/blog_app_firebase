@@ -4,7 +4,7 @@ import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:loginregister/const/const_data.dart';
 import 'package:loginregister/widget/custom_elevated_button.dart';
 import '../../routes/app_pages.dart';
-import '../../shared/service/storage_service.dart';
+import '../../shared/service/firestore_service.dart';
 import 'detail_controller.dart';
 
 class DetailScreen extends GetView<DetailController> {
@@ -44,7 +44,9 @@ final loginText texts=loginText();
                     padding: paddingMeasurement.elevatedButtonPadding,
                     child: customElevatedButton(title: texts.elevatedText,
                      onPressedy: (){
-                     controller.storage.strogeUser(controller.topic.text,controller.content.text);
+                      print("aaaaaaaaa");
+                     var data=controller.db.strogeUser(controller.topic.text,controller.content.text);
+                     print(data.toString());
                       Get.toNamed(Routes.HOME);
                     },titleFontFamily: loginText.homeFontName),
                   )

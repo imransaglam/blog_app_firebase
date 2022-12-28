@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loginregister/const/const_data.dart';
+import 'package:loginregister/widget/custom_elevated_button.dart';
 import 'package:loginregister/widget/custom_floatingaction_button.dart';
 import 'package:loginregister/widget/custom_text_button.dart';
 
@@ -15,7 +16,11 @@ class HomeScreen extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: false,
+        leading:  customTextButton(title: "istatistik", onPressedx: (){
+                                                    controller.analyticsService.logEvent();
+                                                  }),
+        leadingWidth: 70,                                          
+        centerTitle: true,
         elevation: texts.elevationAppBar,
         backgroundColor: loginColor.appBarBgColors,
         title: (Text(texts.appBarText, style: ProjectStyle.appBarStyle)),
@@ -109,9 +114,11 @@ class HomeScreen extends GetView<HomeController> {
                                                       )
                                                     ],
                                                   ),
+                                                  // controller.analyticsService.logEvent();
                                                   customTextButton(title: "DELETE", onPressedx: (){
                                                     controller.db.deleteData(snapshot.data!.docs[index].id);
-                                                  })
+                                                  }),
+                                                   
                                                 ],
                                               )),
                                         )
@@ -135,7 +142,8 @@ class HomeScreen extends GetView<HomeController> {
                                               fontSize: texts.textFontSize,
                                               color: loginColor.blogTextColors),
                                     ),
-                                  )
+                                  ),
+                                 
                                 ],
                               ),
                             ),
@@ -151,7 +159,10 @@ class HomeScreen extends GetView<HomeController> {
       ),
        floatingActionButton: CustomFloatingActionButton(texts: texts,onPressedz: () {
          Get.toNamed(Routes.DETAIL);
-       },)
+       },),
+
+       
+       
       
         );
     
