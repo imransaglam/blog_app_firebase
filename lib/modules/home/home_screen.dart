@@ -1,11 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loginregister/const/const_data.dart';
-import 'package:loginregister/widget/custom_elevated_button.dart';
 import 'package:loginregister/widget/custom_floatingaction_button.dart';
 import 'package:loginregister/widget/custom_text_button.dart';
-
 import '../../routes/app_pages.dart';
 import 'home_controller.dart';
 
@@ -16,10 +13,12 @@ class HomeScreen extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading:  customTextButton(title: "istatistik", onPressedx: (){
-                                                    controller.analyticsService.logEvent();
-                                                  }),
-        leadingWidth: 70,                                          
+        leading: customTextButton(
+            title: "istatistik",
+            onPressedx: () {
+              controller.analyticsService.logEvent();
+            }),
+        leadingWidth: 70,
         centerTitle: true,
         elevation: texts.elevationAppBar,
         backgroundColor: loginColor.appBarBgColors,
@@ -33,144 +32,177 @@ class HomeScreen extends GetView<HomeController> {
           children: [
             Padding(
               padding: paddingMeasurement.stackPadding,
-              child: StreamBuilder(
-                stream: controller.db.readBlog(),
-                builder: (context, snapshot) {
-                  return !snapshot.hasData
+              child: Container(
+                  height: 700,
+                  width: MediaQuery.of(context).size.width,
+                  child: Obx(
+                    () => controller.list.isEmpty
                         ? CircularProgressIndicator()
-                        : Container(
-                    height:700,
-                    width: MediaQuery.of(context).size.width,
-                    child: ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: snapshot.data!.docs.length,
-                        scrollDirection: Axis.vertical,
-                        itemBuilder: (context, index) {
-                           DocumentSnapshot myBlog =
-                                  snapshot.data!.docs[index];
-                          return Card(
-                            elevation: texts.elevationCard,
-                            child: Container(
-                              height: texts.containerHeight,
-                              width: texts.containerWidth,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                      texts.borderRadiusCard)),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    width: texts.containerWidth,
-                                    height: texts.containerrHeight,
-                                    padding: paddingMeasurement.containerPadding,
-                                    child: Row(
-                                      children: [
-                                        CircleAvatar(
-                                          backgroundImage: NetworkImage(
-                                              'https://cdn-icons-png.flaticon.com/512/4140/4140048.png',
-                                              scale: texts.circularAvatarScale),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              paddingMeasurement.containerrPadding,
-                                          child: Container(
-                                              height: texts.containerrrHeight,
-                                              width: texts.containerrrWidth,
-                                              child: Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                children: [
-                                                  Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment.start,
+                        : ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: controller.list.length,
+                            scrollDirection: Axis.vertical,
+                            itemBuilder: (context, index) {
+                              return Card(
+                                elevation: texts.elevationCard,
+                                child: Container(
+                                  height: texts.containerHeight + 50,
+                                  width: texts.containerWidth,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(
+                                          texts.borderRadiusCard)),
+                                  child: Column(
+                                    //crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        width: texts.containerWidth,
+                                        height: texts.containerrHeight,
+                                        padding:
+                                            paddingMeasurement.containerPadding,
+                                        child: Row(
+                                          children: [
+                                            CircleAvatar(
+                                              backgroundImage: NetworkImage(
+                                                  'https://cdn-icons-png.flaticon.com/512/4140/4140048.png',
+                                                  scale: texts
+                                                      .circularAvatarScale),
+                                            ),
+                                            Padding(
+                                              padding: paddingMeasurement
+                                                  .containerrPadding,
+                                              child: Container(
+                                                  height:
+                                                      texts.containerrrHeight,
+                                                  width: texts.containerrrWidth,
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
                                                     children: [
-                                                      Text(
-                                                        "${myBlog["topic"]}",
-                                                        maxLines: texts.textMaxLines,
-                                                        overflow: TextOverflow.ellipsis,
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .titleLarge
-                                                            ?.copyWith(
-                                                                fontFamily: loginText
-                                                                    .homeFontName,
-                                                                fontWeight:
-                                                                    FontWeight.w500),
+                                                      Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            "${controller.list[index].topic}",
+                                                            maxLines: texts
+                                                                .textMaxLines,
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                            style: Theme.of(
+                                                                    context)
+                                                                .textTheme
+                                                                .titleLarge
+                                                                ?.copyWith(
+                                                                  fontSize: 18,
+                                                                    fontFamily:
+                                                                        loginText
+                                                                            .homeFontName,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500),
+                                                          ),
+                                                          _sizedBox(),
+                                                          Text(
+                                                            'Emre Varol',
+                                                            maxLines: texts
+                                                                .textMaxLiness,
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                            style: Theme.of(
+                                                                    context)
+                                                                .textTheme
+                                                                .bodyMedium
+                                                                ?.copyWith(
+                                                                    fontFamily:
+                                                                        loginText
+                                                                            .homeFontName,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                    fontSize: texts
+                                                                        .textFontSize),
+                                                          )
+                                                        ],
                                                       ),
-                                                      _sizedBox(),
-                                                      Text(
-                                                        'Emre Varol',
-                                                        maxLines: texts.textMaxLiness,
-                                                        overflow: TextOverflow.ellipsis,
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .bodyMedium
-                                                            ?.copyWith(
-                                                                fontFamily: loginText
-                                                                    .homeFontName,
-                                                                fontWeight:
-                                                                    FontWeight.w400,
-                                                                fontSize:
-                                                                    texts.textFontSize),
-                                                      )
+                                                      // controller.analyticsService.logEvent();
+                                                     
                                                     ],
-                                                  ),
-                                                  // controller.analyticsService.logEvent();
-                                                  customTextButton(title: "DELETE", onPressedx: (){
-                                                    controller.db.deleteData(snapshot.data!.docs[index].id);
-                                                  }),
-                                                   
-                                                ],
-                                              )),
-                                        )
-                                      ],
-                                    ),
+                                                  )),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          Container(
+                                            padding: paddingMeasurement
+                                                .containerrrPadding,
+                                            width: texts.containerrrrWidth,
+                                            height: texts.containerrrrHeight,
+                                            child: Text(
+                                              "${controller.list[index].content}",
+                                              maxLines: texts.textMaxLines,
+                                              overflow: TextOverflow.ellipsis,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleLarge
+                                                  ?.copyWith(
+                                                      fontFamily: loginText
+                                                          .homeFontName,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontSize:
+                                                          texts.textFontSize,
+                                                      color: loginColor
+                                                          .blogTextColors),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                       Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                         children: [
+                                           customTextButton(
+                                                              title: "DELETE",
+                                                              onPressedx: () {
+                                                                controller.db.deleteData(
+                                                                    controller
+                                                                        .list[index]
+                                                                        .documentId!);
+                                                              }),
+                                                                customTextButton(
+                                          title: "UPDATE",
+                                          onPressedx: () {
+                                            controller.updateController.document_id = controller.list[index].documentId;
+                                            Get.toNamed(Routes.UPDATE);
+                                          }),
+                                         ],
+                                       ),
+                                    
+                                    ],
                                   ),
-                                  Container(
-                                    padding: paddingMeasurement.containerrrPadding,
-                                    width: texts.containerrrrWidth,
-                                    height: texts.containerrrrHeight,
-                                    child: Text(
-                                     "${myBlog["content"]}",
-                                      maxLines: texts.textMaxLines,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleLarge
-                                          ?.copyWith(
-                                              fontFamily: loginText.homeFontName,
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: texts.textFontSize,
-                                              color: loginColor.blogTextColors),
-                                    ),
-                                  ),
-                                 
-                                ],
-                              ),
-                            ),
-                          );
-                        }),
-                  );
-                }
-              ),
+                                ),
+                              );
+                            }),
+                  )),
             ),
           ],
-          
         ),
       ),
-       floatingActionButton: CustomFloatingActionButton(texts: texts,onPressedz: () {
-         Get.toNamed(Routes.DETAIL);
-       },),
-
-       
-       
-      
-        );
-    
+      floatingActionButton: CustomFloatingActionButton(
+        texts: texts,
+        onPressedz: () {
+          Get.toNamed(Routes.DETAIL);
+        },
+      ),
+    );
   }
 
   SizedBox _sizedBox() => SizedBox(
         height: 5,
       );
 }
-
-

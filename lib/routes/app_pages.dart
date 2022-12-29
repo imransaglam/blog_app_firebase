@@ -4,6 +4,8 @@ import 'package:loginregister/modules/home/home_screen.dart';
 import 'package:loginregister/modules/login/login_binding.dart';
 import 'package:loginregister/modules/register/register_binding.dart';
 import 'package:loginregister/modules/register/register_screen.dart';
+import 'package:loginregister/modules/update/update_binding.dart';
+import 'package:loginregister/modules/update/update_screen.dart';
 import '../modules/detail/detail_binding.dart';
 import '../modules/detail/detail_screen.dart';
 import '../modules/login/login_screen.dart';
@@ -31,6 +33,11 @@ class AppPages{
       name: Routes.DETAIL, 
       page: ()=>DetailScreen(),
       binding: DetailBinding()
+      ),
+      GetPage(
+      name: Routes.UPDATE, 
+      page: ()=>UpdateScreen(),
+      binding: UpdateBinding()
       ),
    
       

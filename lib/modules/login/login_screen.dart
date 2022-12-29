@@ -62,6 +62,7 @@ class LoginScreen extends GetView<LoginController> {
                  child: SizedBox(
                   height: texts.sheight,
                    child: TextFormField(
+                    obscureText:true ,
                    controller: controller.password,
                       keyboardType: TextInputType.visiblePassword,
                      decoration:InputDecarotorPassword().inputs,

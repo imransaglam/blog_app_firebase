@@ -4,7 +4,7 @@ class paddingMeasurement {
   static const columnPadding = EdgeInsets.symmetric(horizontal: 60);
   static const iconPadding = EdgeInsets.only(left: 8);
   static const textFieldPadding = EdgeInsets.only(top: 10);
-  static const stackPadding=EdgeInsets.symmetric(horizontal: 15);
+  static const stackPadding=EdgeInsets.symmetric(horizontal: 10);
   static const containerPadding=EdgeInsets.only(top:14,right: 16,bottom: 12,left: 16);
   static const containerrPadding=EdgeInsets.only(left:16,right: 16);
   static const containerrrPadding=EdgeInsets.all(16.0);
@@ -49,6 +49,7 @@ class loginText {
   final String accountText = "Connect with your friends today!";
   final String appBarText = "Home";
   final String appBarTextt="Post A Question";
+  final String updateAppBarTextt="Update A Question";
   static const textFieldTopic = "Topic";
   static const textFieldContent = "Content";
   static const fontName='Teko';
